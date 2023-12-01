@@ -1,19 +1,12 @@
 import "./style.css";
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`;
+const appElement = document.querySelector<HTMLDivElement>("#app");
+appElement!.innerHTML = "<p>loading...</p>";
+(async () => {
+	switch (window.location.pathname) {
+		case "/day/1":
+			return (appElement!.innerHTML = (await import("./pages/day1.ts")).render());
+		default:
+			appElement!.innerHTML = (await import("./pages/404.ts")).render();
+	}
+})();
