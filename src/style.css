@@ -1,7 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 :root {
 	background: #0f0f23;
 	color: #cccccc;
 	font-family: "Source Code Pro", monospace;
 	font-weight: 300;
 	font-size: 14pt;
+}
+
+h1, h2, h3, h4 {
+	font-weight: 300;
+	font-size: 14pt;
+	color: white;
+}
+h1::before {
+	content: '--- ';
+}
+h1::after {
+	content: ' ---';
+}
+h2::before {
+	content: '- '
+}
+h2::after {
+	content: ' -';
 }
