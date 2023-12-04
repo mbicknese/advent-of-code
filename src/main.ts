@@ -6,6 +6,8 @@ appElement!.innerHTML = "<p>loading...</p>";
 	switch (window.location.pathname) {
 		case "/day/1":
 			return (appElement!.innerHTML = (await import("./pages/day1.ts")).render());
+		case "/day/2":
+			return (appElement!.innerHTML = (await import("./pages/day2.ts")).render());
 		default:
 			appElement!.innerHTML = (await import("./pages/404.ts")).render();
 	}
