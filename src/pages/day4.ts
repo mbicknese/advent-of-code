@@ -16,7 +16,29 @@ function solve1() {
 }
 
 function solve2() {
-	return "wip";
+	const cards = input
+		.split("\n")
+		.filter((line) => !!line)
+		.map((line) => line.split(/: +/)[1])
+		.map((line) => line.split(/ +\| +/))
+		.map(([winning, own]) => [winning.split(/ +/), own.split(/ +/)]);
+
+	let copies = Array.from(Array(cards.length), () => 1);
+
+	cards.forEach(([winning, own], card) => {
+		const winCount = winning.filter((winner) => own.includes(winner)).length;
+		if (winCount === 0) {
+			return;
+		}
+
+		copies = [
+			...copies.slice(0, card + 1),
+			...copies.slice(card + 1, card + winCount + 1).map((count) => count + copies[card]),
+			...copies.slice(card + winCount + 1),
+		];
+	});
+
+	return copies.reduce((sum, cur) => sum + cur);
 }
 
 export function render() {
