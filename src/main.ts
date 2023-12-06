@@ -12,6 +12,8 @@ appElement!.innerHTML = "<p>loading...</p>";
 			return (appElement!.innerHTML = (await import("./pages/day3.ts")).render());
 		case "/day/4":
 			return (appElement!.innerHTML = (await import("./pages/day4.ts")).render());
+		case "/day/5":
+			return (appElement!.innerHTML = (await import("./pages/day5.ts")).render());
 		default:
 			appElement!.innerHTML = (await import("./pages/404.ts")).render();
 	}
